@@ -97,3 +97,43 @@ print(stamp.split("-"))  # separa año, mes y día por el guión
 
 csv_file = "1234,Max,USA,1970-10-05,M"
 print(csv_file.split(","))  # Separa los datos de un CSV por la coma
+
+
+# Transformations
+print("ha" * 3)
+print("==============================")  # Separador escrito a mano
+print("=" * 30)  # Mismo separador con *, más corto y fácil de cambiar
+
+
+# Indexes & Slicing
+text = "Python"
+
+# Extract the first character
+print(text[0])  # Extraemos el primer carácter
+print(text[-6])  # Extraemos el primer carácter de forma negativa
+
+# Extract the last character
+print(text[5])  # Extraemos el último carácter
+print(text[-1])  # Extraemos el último carácter de forma negativa
+
+# Extract h
+print(text[3])
+print(text[-3])
+
+# Slicing
+date = "2026-09-20"
+
+# Extract the year
+# Queremos extraer solo el año (inicio y fin) Ojo el fin no se cuenta
+print(date[0:4])  
+# Imprimirá lo mismo, cuando quieres empezar en 0, lo puedes obviar, es una forma perezosa
+print(date[:4])
+
+# Extract the month
+print(date[5:7])
+print(date[-5:-3])
+
+# Extract the day
+print(date[8:])  # Sin fin, llega hasta el último carácter
+print(date[-2:])  # En negativo desde -2 hacia la derecha
+ 
