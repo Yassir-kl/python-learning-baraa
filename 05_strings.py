@@ -179,3 +179,102 @@ nr_of_spaces = len(text) - len(text.strip())
 is_clean = len(text) == len(text.strip())
 print("Nr of spaces:", nr_of_spaces)
 print("Is my data clean?", is_clean)
+
+
+# Case Conversions
+text = "python PROGRAMMING"
+print(text.lower())  # Convierte a minúsculas
+print(text.upper())  # Convierte a mayúsculas
+
+# lower() + strip(): ignora mayúsculas y espacios al comparar
+search = "Email ".lower().strip()
+data = " emAil".lower().strip()
+
+print(search == data)  # True
+
+
+# Search
+phone = "+49-176-12345"
+print(phone.startswith("+49"))  # True
+phone = "+48-176-12345"
+print(phone.startswith("+49"))  # False
+
+email = "ryovgg@gmail.com"
+print(email.endswith("gmail.com"))  # True
+email = "ryovgg@outlook.com"
+print(email.endswith("gmail.com"))  # False
+
+file = "data_backup.csv"
+print(file.endswith(".csv"))  # True
+
+print("@" in email)  # True
+
+url = "https://api.company.com/v1/data"
+# in busca en cualquier parte del texto
+print("/api" in url)  # True
+
+# Search
+# Slicing con posición fija: cada teléfono necesita un número distinto
+phone1 = "+48-176-12345"
+phone2 = "48-654-16548"
+phone3 = "0048-654-16548"
+print(phone1[4:])
+print(phone2[3:])
+
+# find() + slicing: corta desde el guion, sirva el formato que sea
+# +1 para empezar después del guion (si no, el "-" queda incluido)
+print(phone1[phone1.find("-") + 1:])  # 176-12345
+print(phone2[phone2.find("-") + 1:])  # 654-16548
+print(phone3[phone3.find("-") + 1:])  # 654-16548
+
+print(phone1.find("-"))  # posición 3
+print(phone2.find("-"))  # posición 2
+print(phone3.find("-"))  # posición 4
+
+# Validation
+country = "USA"
+# True si solo tiene letras (sin espacios, ni números, ni caracteres especiales)
+print(country.isalpha())  # True
+
+country = "USA1"
+print(country.isalpha())  # False → tiene un número
+
+country = "USA#"
+print(country.isalpha())  # False → tiene un carácter especial
+
+# True si solo tiene números (sin espacios, ni letras, ni caracteres especiales)
+phone = "01761234587"
+print(phone.isnumeric())  # True
+
+phone = "0176-1234587"
+print(phone.isnumeric())  # False → el guion no es número
+
+phone = "3.19"
+print(phone.isnumeric())  # False → el punto no es número
+
+print("===== PYTHON CHALLENGE =====\n")
+text = "968-Maria, ( D@t@ Engineer );; 27y  "
+
+print("name: " + text.replace("968-", "")
+      .replace("@", "a")
+      .replace("(", "| role:")
+      .replace(")", "|")
+      .replace(",", "")
+      .replace(";;", " age:")
+      .replace("y", "")
+      .lower()
+      .strip())
+
+# Otra forma de hacerlo
+text = "968-Maria, ( D@t@ Engineer );; 27y  "
+
+parts = text.split(",")  # ['968-Maria', ' ( D@t@ Engineer );; 27y  ']
+rest = parts[1].split(";;")  # [' ( D@t@ Engineer )', ' 27y  ']
+
+# Limpiar cada dato
+name = parts[0].split("-")[1].lower()
+role = rest[0].replace("@", "a").strip(" ()").lower()
+age = rest[1].strip()[:-1]
+
+# Unir todo
+print(f"name: {name} | role: {role} | age: {age}")
