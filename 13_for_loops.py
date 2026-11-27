@@ -91,3 +91,13 @@ for number in numbers:
 # Ejercicio corregido hecho con range
 for number in range(1, 11):  # del 1 al 10 (el 11 no se incluye)
     print(f"7 x {number} = {7 * number}")  # 7 x 1 = 7 ... 7 x 10 = 70
+    
+# Challenge 2: pirámide de estrellas con 6 filas
+# Forma simple: el * fuera de las comillas repite el texto
+for estrella in range(1, 7):
+    print("*" * estrella)
+
+# Con f-string: la multiplicación va dentro de las llaves
+# (comillas simples adentro porque el f-string usa dobles)
+for estrella in range(1, 7):
+    print(f"{'*' * estrella}")
